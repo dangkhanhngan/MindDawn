@@ -1,0 +1,2088 @@
+<!DOCTYPE html>
+<html lang="vi">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>MindDawn Tan Mây Sáng</title>
+    <link rel="stylesheet" href="style.css" />
+    <style>
+      /* Reset mặc định */
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+        /* Cụm nút liên hệ ở góc phải phía trên footer */
+        .contact-buttons {
+          position: fixed;
+          right: 30px; /* khoảng cách 3 nút trên footer bên phải */
+          bottom: 10px; /* khoảng cách 3 nút trên footer bên dưới */
+          display: flex;
+          flex-direction: row;
+          gap: 12px;
+          z-index: 999;
+        }
+
+        /* Nút tròn */
+        .contact-btn {
+          width: 50px; /* Kích thước nút chiều ngang */
+          height: 50px; /* Kích thước nút chiều đ */
+          border-radius: 50%;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          font-size: 24px;
+          color: white;
+          text-decoration: none;
+          box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+          transition: transform 0.3s ease, opacity 0.3s ease;
+          animation: pulse 1s infinite;
+        }
+
+        /* Màu riêng cho từng nút */
+        .contact-btn.phone {
+          background-color: #28a745;
+        } /* Xanh lá gọi điện */
+        .contact-btn.zalo {
+          background-color: #00b7ff;
+        } /* Xanh Zalo */
+        .contact-btn.messenger {
+          background-color: #006aff;
+        } /* Xanh Messenger */
+
+        /* Hiệu ứng hover */
+        .contact-btn:hover {
+          transform: scale(1.15);
+          opacity: 0.9;
+        }
+
+        /* 🔆 Hiệu ứng nhấp nháy nhẹ */
+        @keyframes pulse {
+          0% {
+            box-shadow: 0 0 0 0 rgba(255, 255, 255, 1);
+          }
+          70% {
+            box-shadow: 0 0 0 25px rgba(255, 255, 255, 0);
+          }
+          100% {
+            box-shadow: 0 0 0 0 rgba(255, 255, 255, 0);
+          }
+        }      
+
+      html,
+      body {
+        /*Bố cục web hiện đại vì không che nội dung, mà vẫn giữ footer ở đáy khi trang ngắn*/
+        height: 100%; /*Chiều cao toàn màn hình*/
+        margin: 0;
+        padding: 0;
+        display: flex; /*Dùng Flexbox để bố cục cột*/
+        flex-direction: column; /*Sắp xếp các phần tử dọc: header → main → footer*/
+      }
+
+      iframe {
+        width: 100vw; /* Chiều ngang toàn màn hình */
+        height: 100vh; /* Chiều cao toàn màn hình */
+        border: none;
+        border-radius: 0; /* Không bo góc để khít viền màn hình */
+        box-shadow: none;
+        display: block;
+      }
+
+      /* --- Phần đầu nội dung --- */
+      body {
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+        background-color: #f4f6f8;
+        /*background-image: url('https://live.staticflickr.com/65535/54918034916_49ac67b739_m.jpg'); /* đường dẫn đến ảnh của bạn */
+        font-size: 20px; /*Cỡ chữ cho dòng đầu tiên của phần body*/
+        color: #060104; /*Màu cho phần nội dung dưới tiêu đề - phần p*/
+        line-height: 1.6; /*Giãn cách dòng trong phần thân*/
+      }
+
+      /* --- Phần đầu trang --- */
+      header {
+        background-color: #0078d7; /*Màu nền cho phần đầu trang web*/
+        color: white; /*Màu chữ trong phần header*/
+        padding: 50px 0; /*Chiều cao của phần header*/
+        text-align: center; /*Canh lề cho nội dung trong phần header*/
+        font-size: 24px; /*Cỡ chữ cho phần header*/
+        font-weight: bold; /*Định dạng chữ đậm cho phần header*/
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+      }
+
+      /* Phần này bỏ không ảnh hưởng */
+      header h1 {
+        font-size: 48px; /*Kích cỡ chữ cho phần đầu header 1*/
+        font-weight: bold;
+        margin-bottom: 10px;
+        /*background-color: hsl(158, 100%, 42%); /*Màu nền cho phần đầu tiêu đề trang web*/
+      }
+
+      /* --- COVER PAGE --- */
+      .cover-page {
+        height: 80vh; /* Chiều cao toàn màn hình */
+        min-height: 20vh; /* Cao hơn 1.2 lần màn hình */
+        background-image: url("https://live.staticflickr.com/65535/54918034916_49ac67b739_m.jpg"); /* Đường dẫn đến ảnh của bạn */
+        background-size: cover; /* Ảnh phủ kín toàn bộ */
+        background-position: center; /* Căn giữa ảnh */
+        background-repeat: no-repeat; /* Không lặp lại ảnh */
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        font-size: 22px;
+        line-height: 1.2;
+        color: rgb(8, 123, 77); /* Màu phủ mờ (tuỳ chọn) */
+        /*background-color: rgba(0, 0, 0, 0.5); /* Màu phủ mờ (tuỳ chọn) */
+      }
+
+      /* Chữ chạy Cover page*/
+      .cover-page {
+        height: 80vh;
+        background-image: url("https://live.staticflickr.com/65535/54918034916_49ac67b739_m.jpg");
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        margin: 0;
+        overflow: hidden; /* Ẩn phần chữ ra ngoài */
+      }
+
+      /* Khung chứa chữ chạy dòng trên */
+      .text-container {
+        width: 100%;
+        overflow: hidden;
+        white-space: nowrap;
+      }
+
+      /* Chữ chạy + đổi màu liên tục */
+      .text-run {
+        display: inline-block;
+        font-size: 2em;
+        font-weight: bold;
+        text-transform: uppercase;
+        background: linear-gradient(
+          90deg,
+          #ff0057,
+          #f8aa02,
+          #03de12,
+          #08aae0,
+          #ff00c8,
+          #1904db,
+          #006aff
+        );
+        background-size: 400%;
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        animation: moveText 8s linear infinite, colorShift 1s linear infinite; /*Tốc độ chạy chữ*/
+      }
+
+      /* hiệu ứng chạy ngang */
+      @keyframes moveText {
+        0% {
+          transform: translateX(100%);
+        }
+        100% {
+          transform: translateX(-100%);
+        }
+      }
+
+      /* hiệu ứng đổi màu chữ */
+      @keyframes colorShift {
+        0% {
+          background-position: 0% 50%;
+        }
+        100% {
+          background-position: 100% 50%;
+        }
+      }
+
+      /* ✨ Dòng dưới nhấp nháy liên tục */
+      .blink-text {
+        font-size: 1.3em;
+        margin-top: 18px;
+        color: #fee503; /* vàng sáng */
+        font-size: 32px;
+        font-weight: bold;
+        text-shadow: 0 0 5px #ff0000, 0 0 16px #ff5722;
+        animation: blink 3s step-start infinite;
+      }
+
+      /* Tạo hiệu ứng nhấp nháy */
+      @keyframes blink {
+        40% {
+          opacity: 0;
+        }
+      }
+
+      /* --- Thanh điều hướng --- */
+      nav {
+        background-color: #034edb; /*Màu nền menu*/
+        display: flex;
+        justify-content: center;
+        gap: 50px; /*Khoảng cách các chữ trên thanh điều hướng*/
+        padding: 10px 0;
+      }
+
+      nav a {
+        color: white; /*Màu chữ trên thanh điều hướng*/
+        text-decoration: none;
+        font-weight: 500;
+        font-size: 20px;
+        transition: color 0.3s, transform 0.3s;
+      }
+
+      nav a:hover {
+        color: #08bcdc; /*Đổi màu khi rê chuột*/
+        transform: scale(1.1); /*Tăng nhẹ kích thước*/
+      }
+
+      /* Dropdown (menu con của Trò chơi) */
+      .dropdown {
+        position: relative;
+        display: inline-block;
+      }
+
+      .dropdown-content {
+        display: none;
+        position: absolute;
+        background-color: white;
+        min-width: 180px; /*Khoảng cách chiều ngang của hộp thoại xuất hiện trong hộp danh sách*/
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        border-radius: 6px;
+        z-index: 1;
+      }
+
+      .dropdown-content a {
+        color: black;
+        padding: 10px 14px; /*Khoảng cách cách các chữ trong hộp danh sách*/
+        display: block;
+        text-decoration: none;
+        font-size: 18px; /*Cỡ chữ trong danh sách*/
+        line-height: 1.0;
+      }
+
+      .dropdown-content a:hover {
+        background-color: #11d9e7;
+      }
+
+      .dropdown:hover .dropdown-content {
+        display: block;
+      }
+
+      /* --- Thân trang --- */
+      main {
+        flex: 1; /*Đẩy footer xuống đáy nếu nội dung ít*/
+        padding: 0px 0; /*Khoảng cách chừa lề trên trong phần nội dung*/
+        text-indent: 40px; /*Thụt đầu dòng 1 tab cho đoạn văn*/
+        width: 100%; /*Chiều rộng tối đa của trang web dùng chứa nội dung*/
+        /*background: #f0f0f0; /*Màu nền của phần thân trang web*/
+        /*background-image: url('https://live.staticflickr.com/65535/54907229783_8fbc4f0d89_m.jpg'); /* đường dẫn đến ảnh 1 của bạn */
+        background-image: url("https://live.staticflickr.com/65535/54907229798_2a40068441_m.jpg"); /* đường dẫn đến ảnh 2 của bạn */
+        border-radius: 10px; /*Góc cong cho phần thân trang web*/
+        background-repeat: no-repeat;
+        /*background-size: contain; /* hiển thị hết hình, có thể còn khoảng trống */
+        background-size: cover; /* phủ kín toàn bộ khung hình */
+        background-position: center; /* căn giữa hình */
+        /*background-attachment: fixed; /* cố định hình khi cuộn trang (tuỳ chọn) */
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        min-height: 3000px; /*Chiều cao của trang web dùng chứa nội dung*/
+      }
+
+      .container {
+        max-width: 1000px;
+        margin: 0 30px;
+      }
+
+      main h2 {
+        /*Phần tiêu đề trong phần nội dung*/
+        margin-top: 20px;
+        color: #0853ea; /*Màu cho dòng tiêu đề trong phần nội dung*/
+        padding-left: 30px;
+        margin-bottom: 20px; /*Khoảng cách phía sau dòng tiêu đề h2*/
+      }
+
+      main p {
+        /*Phần nội dung*/
+        margin-bottom: 15px; /*Khoảng cách trống bên dưới mỗi đoạn*/
+        text-align: justify; /*Canh lề đều hai bên*/
+      }
+
+      /* --- Chân trang --- */
+
+      /* Ẩn nội dung khi chưa được chọn */
+      .page {
+        display: none;
+        background-color: url("https://live.staticflickr.com/65535/54907455155_9ff01eb8b2_m.jpg"); /* hình nền khác nhau body-menu thì dùng background-image*/
+        border-radius: 10px;
+        padding: 0px;
+        max-width: 100vw;
+        margin: auto;
+      }
+
+      .active {
+        display: block;
+      }
+
+      /* 🔸 Bố cục 2 cột cho phần sản phẩm */
+      .product-section {
+        display: flex; /* Hiển thị dạng hàng ngang */
+        align-items: flex-start; /* Căn đỉnh 2 khối thẳng hàng */
+        justify-content: space-between;
+        gap: 30px; /* Khoảng cách giữa 2 cột */
+        flex-wrap: wrap; /* Tự xuống dòng nếu màn hình nhỏ */
+        margin: 20px 40px; /* Chừa lề 2 bên */
+      }
+
+      /* 🔸 Cột trái: phần nội dung mô tả */
+      .product-text {
+        flex: 1; /* Chiếm 1 phần linh hoạt */
+        min-width: 280px; /* Giữ kích thước tối thiểu khi co lại */
+        font-size: 18px;
+        font-family: "Times New Roman", Times, serif;
+        line-height: 1.7;
+      }
+
+      /* 🔸 Cột phải: phần video */
+      .product-video {
+        flex: 1; /* Chiếm 1 phần linh hoạt */
+        min-width: 50px;
+        text-align: center;
+      }
+
+      /* 🔸 xxxxx: xxxxx */
+      .product-video iframe {
+        width: 50%;
+        height: fit-content;
+        border-radius: 10px;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+      }
+
+      /* 🔸 xxxxx: xxxxx */
+      .banner {
+        background-image: url("https://live.staticflickr.com/65535/54907455155_9ff01eb8b2_m.jpg"); /*Hình Cô Ngọc*/
+        /*background-image: url('https://live.staticflickr.com/65535/54907229783_8fbc4f0d89_m.jpg');/*Hình KN1*/
+        /*background-image: url('https://live.staticflickr.com/65535/54907229798_2a40068441_m.jpg');/*Hình KN2*/
+        background-size: cover;
+        background-position: center;
+        width: 99vw;
+        height: 180px;
+        line-height: 1.4;
+        aspect-ratio: 5 / 1; /* tự co chiều cao theo màn hình */
+        border-radius: 0px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        position: relative;
+      }
+
+      .banner-text {
+        color: rgb(11, 99, 68);
+        font-size: 36px; /*Kích thước chữ trên trang cover*/
+        font-weight: bold;
+        text-align: center;
+        width: 100%; /* 🟢 giúp chữ và nền phủ toàn chiều ngang */
+        padding: 20px 20px; /* thêm khoảng cách trên dưới */
+        background: rgba(0, 0, 0, 0.069); /* Làm nền mờ trong phần đầu tiên */
+        border-radius: 20px; /* nếu muốn 4 góc bo tròn, giữ 20px */
+        position: absolute; /* giúp chữ nổi giữa ảnh */
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%); /* căn giữa hoàn hảo */
+        z-index: 1;
+        display: flex; /* giúp căn giữa cả chiều ngang */
+        justify-content: center; /* căn giữa nội dung */
+        align-items: center; /* căn giữa theo trục dọc */
+      }
+      
+      /* ===== Footer Styles ===== */
+      footer {
+        position: fixed;
+        left: 0;
+        bottom: 0;
+        width: 100%;
+        background-color: #0077b6;
+        color: white;
+        text-align: center;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 15px 10px;
+        font-size: 16px;
+        z-index: 100;
+        box-sizing: border-box;
+      }
+
+      /* ===== Responsive Font Sizes ===== */
+      @media (max-width: 768px) {
+        footer {
+          font-size: 14px;
+          padding: 12px 8px;
+        }
+      }
+
+      @media (max-width: 480px) {
+        footer {
+          font-size: 12px;
+          padding: 10px 6px;
+          text-align: center;
+          flex-direction: column; /* stack text for tiny screens */
+        }
+      }
+     
+      body {
+        margin: 0;
+        font-family: "Lato", sans-serif;
+      }
+
+      /* ======== Desktop Navbar ======== */
+      nav {
+        background-color: #0077b6;
+        display: flex;
+        justify-content: center; /* Center nav-links */
+        align-items: center;
+        padding: 0 20px;
+        position: relative;
+        z-index: 100;
+      }
+
+      .nav-links {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      nav a {
+        color: white;
+        text-decoration: none;
+        padding: 14px 16px;
+        display: block;
+        font-size: 18px;
+      }
+
+      nav a:hover {
+        background-color: #005f87;
+      }
+
+      /* ======== Logo (Hide on Desktop) ======== */
+      .logo {
+        color: white;
+        font-size: 20px;
+        font-weight: bold;
+        display: none; /* hidden by default */
+      }
+
+      /* ======== Dropdown (Desktop) ======== */
+      .dropdown {
+        position: relative;
+      }
+
+      .dropdown-content {
+        display: none;
+        position: absolute;
+        background-color: #0077b6;
+        min-width: 200px;
+        z-index: 200;
+      }
+
+      .dropdown-content a {
+        color: white;
+        padding: 12px 16px;
+        display: block;
+        text-align: left;
+      }
+
+      .dropdown-content a:hover {
+        background-color: #005f87;
+      }
+
+      .dropdown:hover .dropdown-content {
+        display: block;
+      }
+
+      /* ======== Mobile Sidebar ======== */
+      .sidenav {
+        height: 100%;
+        width: 0;
+        position: fixed;
+        z-index: 1001;
+        top: 0;
+        left: 0;
+        background-color: #111;
+        overflow-x: hidden;
+        transition: 0.4s;
+        padding-top: 60px;
+      }
+
+      .sidenav a {
+        padding: 10px 30px;
+        text-decoration: none;
+        font-size: 20px;
+        color: #ccc;
+        display: block;
+        transition: 0.3s;
+      }
+
+      .sidenav a:hover {
+        color: #fff;
+      }
+
+      .submenu {
+        display: none;
+        background-color: #222;
+        margin-left: 20px;
+      }
+
+      .submenu a {
+        font-size: 18px;
+        padding-left: 40px;
+      }
+
+      .expandable {
+        cursor: pointer;
+        position: relative;
+      }
+
+      .expandable::after {
+        content: "▸";
+        position: absolute;
+        right: 30px;
+        transition: transform 0.3s;
+      }
+
+      .expandable.active::after {
+        transform: rotate(90deg);
+      }
+
+      /* ======== Hamburger Icon ======== */
+      .menu-icon {
+        display: none;
+        flex-direction: column;
+        cursor: pointer;
+        position: absolute;
+        right: 20px;
+      }
+
+      .menu-icon div {
+        width: 25px;
+        height: 3px;
+        background-color: white;
+        margin: 4px 0;
+      }
+
+      /* ======== Overlay ======== */
+      .overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.3);
+        display: none;
+        z-index: 1000;
+      }
+
+      /* ======== Responsive ======== */
+      @media screen and (max-width: 768px) {
+        nav {
+          justify-content: space-between; /* show logo + menu icon */
+          padding: 0 20px;
+        }
+
+        .logo {
+          display: block; /* show only on mobile */
+        }
+
+        .nav-links {
+          display: none; /* hide desktop links on mobile */
+        }
+
+        .menu-icon {
+          display: flex;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Đầu trang -->
+
+    <!-- Cover Page -->
+    <section class="cover-page">
+      <div class="text-container">
+        <h1 class="text-run">
+          🌿Chào mừng bạn đến với trang web của chúng tôi🌿
+        </h1>
+      </div>
+      <p class="blink-text">👉 💖Khám phá nhiều điều thú vị bên dưới💖 👇</p>
+    </section>
+
+    <nav>
+      <!-- Only visible on mobile -->
+      <div class="logo">MindDawn</div>
+
+      <div class="nav-links">
+        <a href="#" onclick="showPage('home')">Trang chủ</a>
+        <a href="#" onclick="showPage('about')">Giới thiệu</a>
+        <a href="#" onclick="showPage('goal')">Mục tiêu</a>
+        <a href="#" onclick="showPage('solution')">Giải pháp</a>
+        <a href="#" onclick="showPage('result')">Kết quả</a>
+
+        <div class="dropdown">
+          <a href="#" onclick="showPage('product')" class="dropbtn"
+            >Sản phẩm ▾</a
+          >
+          <div class="dropdown-content">
+            <a href="#" onclick="moSanPham('fanpage')">Fanpage: “Trời xanh”</a>
+            <a href="#" onclick="moSanPham('podcast')">Podcast: “Giữ tâm”</a>
+            <a href="#" onclick="moSanPham('lang')">Sổ “Lặng”</a>
+            <a href="#" onclick="moSanPham('rise')">Sổ “Rise”</a>
+          </div>
+        </div>
+
+        <div class="dropdown">
+          <a href="#" onclick="showGames()" class="dropbtn">Trò chơi ▾</a>
+          <div class="dropdown-content">
+            <a href="#" onclick="moTroChoi('thpt')">THPT</a>
+            <a href="#" onclick="moTroChoi('thcs')">THCS</a>
+            <a href="#" onclick="moTroChoi('tieuhoc')">Tiểu học</a>
+          </div>
+        </div>
+
+        <a href="#" onclick="showPage('contact')">Liên hệ</a>
+      </div>
+
+      <!-- Hamburger icon -->
+      <div class="menu-icon" onclick="openNav()">
+        <div></div>
+        <div></div>
+        <div></div>
+      </div>
+    </nav>
+
+    <!-- ======== OVERLAY ======== -->
+    <div id="overlay" class="overlay" onclick="closeNav()"></div>
+
+    <!-- ======== SIDEBAR (Mobile Menu) ======== -->
+    <div id="mySidenav" class="sidenav" onclick="event.stopPropagation()">
+      <a href="#" onclick="showPage('home')">Trang chủ</a>
+      <a href="#" onclick="showPage('about')">Giới thiệu</a>
+      <a href="#" onclick="showPage('goal')">Mục tiêu</a>
+      <a href="#" onclick="showPage('solution')">Giải pháp</a>
+      <a href="#" onclick="showPage('result')">Kết quả</a>
+
+      <a class="expandable" onclick="showPage('product')">Sản phẩm</a>
+      <div class="submenu">
+        <a href="#" onclick="moSanPham('fanpage')">Fanpage: “Trời xanh”</a>
+        <a href="#" onclick="moSanPham('podcast')">Podcast: “Giữ tâm”</a>
+        <a href="#" onclick="moSanPham('lang')">Sổ “Lặng”</a>
+        <a href="#" onclick="moSanPham('rise')">Sổ “Rise”</a>
+      </div>
+
+      <a class="expandable" onclick="showGames()">Trò chơi</a>
+      <div class="submenu">
+        <a href="#" onclick="moTroChoi('thpt')">THPT</a>
+        <a href="#" onclick="moTroChoi('thcs')">THCS</a>
+        <a href="#" onclick="moTroChoi('tieuhoc')">Tiểu học</a>
+      </div>
+      <a href="#" onclick="showPage('contact')">Liên hệ</a>
+    </div>
+
+    <!-- ======== JS ======== -->
+    <script>
+      function openNav() {
+        document.getElementById("mySidenav").style.width = "250px";
+        document.getElementById("overlay").style.display = "block";
+      }
+
+      function closeNav() {
+        document.getElementById("mySidenav").style.width = "0";
+        document.getElementById("overlay").style.display = "none";
+      }
+
+      /* Expandable submenus for mobile */
+      document.querySelectorAll(".expandable").forEach((item) => {
+        item.addEventListener("click", function () {
+          this.classList.toggle("active");
+          const submenu = this.nextElementSibling;
+          submenu.style.display =
+            submenu.style.display === "block" ? "none" : "block";
+        });
+      });
+
+      /* Dummy handlers */
+      function showPage(name) {
+        console.log("Show page:", name);
+      }
+      function moSanPham(name) {
+        console.log("Open product:", name);
+      }
+      function moTroChoi(name) {
+        console.log("Open game:", name);
+      }
+    </script>
+
+    <!-- Thân trang -->
+    <main id="main-content">
+      <div id="home" class="page active">
+        <!-- Hero section -->
+        <section
+          style="
+            background: linear-gradient(135deg, #1a237e 0%, #0d47a1 100%);
+            color: white;
+            text-align: center;
+            padding: 80px 20px;
+          "
+        >
+          <h1 style="font-size: 3em; font-weight: bold; margin-bottom: 20px">
+            🌿 MindDawn - Tan Mây Sáng 🌿<br />
+          </h1>
+          <p style="font-size: 1.2em; margin-bottom: 30px; text-align: center">
+            💡Để ánh sáng chạm vào tâm trí bạn, xua tan màn sương mù
+          </p>
+          <br />
+          <a
+            href="#intro"
+            onclick="showPage('intro')"
+            style="
+              background-color: #ff9800;
+              color: white;
+              padding: 12px 25px;
+              border-radius: 6px;
+              text-decoration: none;
+              font-weight: bold;
+            "
+            >KHÁM PHÁ CHI TIẾT DỰ ÁN</a
+          >
+        </section>
+
+        <!-- Cards section -->
+        <section
+          style="
+            padding: 60px 20px;
+            text-align: center;
+            background-color: #f8f8f8;
+          "
+        >
+          <h2 style="color: #0d47a1; margin-bottom: 20px">
+            DỰ ÁN NGHIÊN CỨU KHOA HỌC
+          </h2>
+          <p
+            style="
+              max-width: 800px;
+              margin: auto;
+              color: #555;
+              margin-bottom: 40px;
+              text-align: center;
+            "
+          >
+            Giới thiệu các nội dung chính của trang web
+          </p>
+
+          <div
+            style="
+              display: flex;
+              flex-wrap: wrap;
+              justify-content: center;
+              gap: 20px;
+            "
+          >
+            <a
+              href="#intro"
+              onclick="showPage('about')"
+              style="text-decoration: none"
+            >
+              <div
+                style="
+                  width: 180px;
+                  padding: 20px;
+                  background-color: #e3f2fd;
+                  border-radius: 10px;
+                  text-align: left;
+                "
+              >
+                <span style="font-size: 2.5em">💡</span>
+                <h4 style="color: #1565c0; text-align: justify">Giới Thiệu</h4>
+                <p style="font-size: 0.9em; color: #555"></p>
+              </div>
+            </a>
+            <a
+              href="#goals"
+              onclick="showPage('goal')"
+              style="text-decoration: none"
+            >
+              <div
+                style="
+                  width: 180px;
+                  padding: 20px;
+                  background-color: #e8f5e9;
+                  border-radius: 10px;
+                  text-align: left;
+                "
+              >
+                <span style="font-size: 2.5em">🎯</span>
+                <h4 style="color: #2e7d32; text-align: left">Mục Tiêu</h4>
+                <p style="font-size: 0.9em; color: #555"></p>
+              </div>
+            </a>
+            <a
+              href="#goals"
+              onclick="showPage('result')"
+              style="text-decoration: none"
+            >
+              <div
+                style="
+                  width: 180px;
+                  padding: 20px;
+                  background-color: #e8f5e9;
+                  border-radius: 10px;
+                  text-align: left;
+                "
+              >
+                <span style="font-size: 2.5em">✅</span>
+                <h4 style="color: #2e7d32; text-align: left">Kết Quả</h4>
+                <p style="font-size: 0.9em; color: #555"></p>
+              </div>
+            </a>
+            <a
+              href="#solutions"
+              onclick="showPage('solution')"
+              style="text-decoration: none"
+            >
+              <div
+                style="
+                  width: 180px;
+                  padding: 20px;
+                  background-color: #fff3e0;
+                  border-radius: 10px;
+                  text-align: left;
+                "
+              >
+                <span style="font-size: 2.5em">⚙️</span>
+                <h4 style="color: #fb8c00; text-align: left">Giải Pháp</h4>
+                <p style="font-size: 0.9em; color: #555"></p>
+              </div>
+            </a>
+            <a
+              href="#products"
+              onclick="showPage('product')"
+              style="text-decoration: none"
+            >
+              <div
+                style="
+                  width: 180px;
+                  padding: 20px;
+                  background-color: #fce4ec;
+                  border-radius: 10px;
+                  text-align: left;
+                "
+              >
+                <span style="font-size: 2.5em">🎁</span>
+                <h4 style="color: #c2185b; text-align: left">Sản Phẩm</h4>
+                <p style="font-size: 0.9em; color: #555"></p>
+              </div>
+            </a>
+            <a
+              href="#products"
+              onclick="showGames();"
+              style="text-decoration: none"
+            >
+              <div
+                style="
+                  width: 180px;
+                  padding: 20px;
+                  background-color: #fce4ec;
+                  border-radius: 10px;
+                  text-align: left;
+                "
+              >
+                <span style="font-size: 2.5em">🎮</span>
+                <h4 style="color: #c2185b; text-align: left">Trò Chơi</h4>
+                <p style="font-size: 0.9em; color: #555"></p>
+              </div>
+            </a>
+            <a
+              href="#contact"
+              onclick="showPage('contact')"
+              style="text-decoration: none"
+            >
+              <div
+                style="
+                  width: 180px;
+                  padding: 20px;
+                  background-color: #ede7f6;
+                  border-radius: 10px;
+                  text-align: left;
+                "
+              >
+                <span style="font-size: 2.5em">📧</span>
+                <h4 style="color: #5e35b1; text-align: left">Liên Hệ</h4>
+                <p style="font-size: 0.9em; color: #555"></p>
+              </div>
+            </a>
+          </div>
+        </section>
+      </div>
+
+      <div id="about" class="page">
+        <section
+          style="
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 40px 30px;
+            font-size: 18px;
+            line-height: 1.8;
+            color: #333;
+          "
+        >
+          <h2
+            style="
+              text-align: center;
+              color: #0d47a1;
+              font-size: 32px;
+              margin-bottom: 15px;
+              border-bottom: 3px solid #64b5f6;
+              display: inline-block;
+              padding-bottom: 8px;
+            "
+          >
+            🔍 KHÁM PHÁ HỘI CHỨNG "SƯƠNG MÙ NÃO"
+          </h2>
+          <h3
+            style="
+              text-align: center;
+              color: #1e88e5;
+              font-size: 24px;
+              margin-bottom: 40px;
+            "
+          >
+            Brain Fog: Hiểu Rõ Vấn Đề Để Nâng Cao Sức Khỏe Nhận Thức
+          </h3>
+
+          <div
+            style="
+              background: #e3f2fd;
+              border-left: 6px solid #2196f3;
+              padding: 30px;
+              border-radius: 12px;
+              margin-bottom: 50px;
+            "
+          >
+            <h4 style="color: #1565c0; font-size: 22px; margin-bottom: 15px">
+              1. "Sương Mù Não" (Brain Fog) Là Gì?
+            </h4>
+
+            <p
+              style="
+                text-align: justify;
+                margin-bottom: 20px;
+                border-bottom: 1px dashed #bbdefb;
+                padding-bottom: 15px;
+              "
+            >
+              Định nghĩa chi tiết: **Brain Fog không phải là một bệnh lý cụ
+              thể**, mà là một **hội chứng** (tập hợp các triệu chứng) phản ánh
+              sự suy giảm chức năng nhận thức. Nó mô tả trạng thái tinh thần mệt
+              mỏi và thiếu sự minh mẫn.
+            </p>
+
+            <h5 style="color: #00838f; font-size: 19px; margin-bottom: 10px">
+              🧠 Các Khía Cạnh Bị Ảnh Hưởng (Triệu chứng):
+            </h5>
+            <div style="text-align: center; margin-bottom: 25px">
+              <img
+                src="hinh-gioi-thieu-1.jpg" 
+                alt="Infographic ảnh hưởng của Brain Fog"
+                style="
+                  max-width: 90%;
+                  height: auto;
+                  border-radius: 10px;
+                  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+                "
+              />
+            </div>
+
+            <ul style="margin-left: 25px; color: #424242">
+              <li>
+                **Khó tập trung:** Dễ bị phân tâm, không thể duy trì sự chú ý
+                vào một nhiệm vụ trong thời gian dài.
+              </li>
+              <li>
+                **Suy giảm trí nhớ:** Khó ghi nhớ thông tin mới, quên những điều
+                đơn giản hàng ngày.
+              </li>
+              <li>
+                **Tư duy chậm chạp/Khó xử lý thông tin:** Cảm giác **"đứng
+                hình"** khi cần đưa ra quyết định, chậm phản ứng, khó giải quyết
+                vấn đề.
+              </li>
+              <li>
+                **Mơ hồ về tinh thần:** Cảm giác đầu óc không minh mẫn, không rõ
+                ràng, như có một màn sương che phủ suy nghĩ.
+              </li>
+              <li>
+                **Mệt mỏi về tinh thần:** Cảm giác kiệt sức dù không hoạt động
+                thể chất nhiều.
+              </li>
+            </ul>
+
+            <blockquote
+              style="
+                background: #fff3e0;
+                border-left: 4px solid #ff9800;
+                padding: 15px;
+                margin-top: 25px;
+                border-radius: 8px;
+                font-size: 17px;
+              "
+            >
+              **Điểm khác biệt:** Brain Fog có tính chất **dai dẳng hơn** so với
+              sự đãng trí thông thường hay mệt mỏi nhất thời, và ảnh hưởng đáng
+              kể đến hoạt động hàng ngày của học sinh.
+            </blockquote>
+          </div>
+
+          <div
+            style="
+              background: #e8f5e9;
+              border-left: 6px solid #4caf50;
+              padding: 30px;
+              border-radius: 12px;
+            "
+          >
+            <h4 style="color: #2e7d32; font-size: 22px; margin-bottom: 15px">
+              2. Ai Bị Ảnh Hưởng và Tại Sao Quan Trọng Với Học Sinh THPT?
+            </h4>
+
+            <h5 style="color: #1b5e20; font-size: 19px; margin-bottom: 10px">
+              🎯 Mức độ Phổ biến ở Học sinh THPT:
+            </h5>
+            <p style="text-align: justify; margin-bottom: 20px">
+              Lứa tuổi THPT đặc biệt dễ bị ảnh hưởng bởi Brain Fog do sự giao
+              thoa của nhiều yếu tố áp lực.
+            </p>
+            <ul style="margin-left: 25px; color: #424242">
+              <li>
+                **Áp lực học tập và thi cử:** Khối lượng kiến thức lớn, đối diện
+                với các kỳ thi quan trọng (Tốt nghiệp, Đại học).
+              </li>
+              <li>
+                **Thay đổi sinh lý và tâm lý:** Sự biến động hormone, phát triển
+                não bộ và tìm kiếm định hướng bản thân.
+              </li>
+              <li>
+                **Lối sống hiện đại:** Thiếu ngủ, chế độ ăn uống không khoa học,
+                và việc dành quá nhiều thời gian cho thiết bị điện tử/mạng xã
+                hội.
+              </li>
+              <li>
+                **Căng thẳng tinh thần:** Stress, lo âu, và trầm cảm có thể là
+                nguyên nhân hoặc là vòng luẩn quẩn của Brain Fog.
+              </li>
+            </ul>
+
+            <h5
+              style="
+                color: #1b5e20;
+                font-size: 19px;
+                margin-top: 25px;
+                margin-bottom: 10px;
+              "
+            >
+              🚨 Hậu Quả Của Brain Fog Đối Với Học Sinh:
+            </h5>
+            <div style="text-align: center; margin-top: 20px">
+              <img
+                src="hinh-gioi-thieu-2.jpg"
+                alt="Infographic hậu quả của Brain Fog đối với học sinh"
+                style="
+                  max-width: 90%;
+                  height: auto;
+                  border-radius: 10px;
+                  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+                "
+              />
+            </div>
+            <ul style="margin-left: 25px; color: #424242; margin-top: 20px">
+              <li>
+                **Kết quả học tập:** Điểm số giảm sút, mất động lực học tập
+                nghiêm trọng.
+              </li>
+              <li>
+                **Sức khỏe tinh thần:** Tăng nguy cơ lo âu, trầm cảm, căng thẳng
+                kéo dài.
+              </li>
+              <li>**Quan hệ xã hội:** Khó giao tiếp, xu hướng thu mình lại.</li>
+              <li>
+                **Chất lượng cuộc sống:** Cảm thấy mệt mỏi, chán nản, mất hứng
+                thú với mọi hoạt động.
+              </li>
+            </ul>
+          </div>
+        </section>
+      </div>
+
+      <!-- Cách trình bày đẹp hơn cho phần Mục tiêu -->
+      <div id="goal" class="page">
+        <section
+          style="
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 30px;
+            font-size: 18px;
+            line-height: 1.8;
+            color: #333;
+          "
+        >
+          <h2
+            style="
+              text-align: center;
+              color: #1d4ed8;
+              font-size: 28px;
+              margin-bottom: 15px;
+            "
+          >
+            🎯 MỤC TIÊU
+          </h2>
+          <h3
+            style="
+              text-align: center;
+              color: #2563eb;
+              font-size: 22px;
+              margin-bottom: 25px;
+            "
+          >
+            Định Hướng Nghiên Cứu và Khát Vọng Thay Đổi
+          </h3>
+
+          <p style="text-align: justify; margin-bottom: 20px">
+            Mục tiêu chính của dự án
+            <strong>"Brain Fog ở Học sinh THPT: Hiểu rõ để Vượt qua"</strong> là
+            đóng góp vào việc
+            <strong>nâng cao nhận thức và sức khỏe tinh thần</strong> cho cộng
+            đồng học sinh trung học phổ thông, đặc biệt trong bối cảnh những
+            thách thức học đường hiện nay. Cụ thể, dự án đặt ra các mục tiêu
+            sau:
+          </p>
+
+          <!-- Mục tiêu tổng quát -->
+          <div
+            style="
+              background: #f0f7ff;
+              border-left: 6px solid #3b82f6;
+              padding: 20px;
+              border-radius: 10px;
+              margin-bottom: 30px;
+            "
+          >
+            <h4 style="color: #1d4ed8; font-size: 20px; margin-bottom: 10px">
+              1️⃣ Mục tiêu Tổng quát
+            </h4>
+            <ul style="margin-left: 25px">
+              <li>
+                🌿 Nâng cao nhận thức và hiểu biết toàn diện về hội chứng
+                <em>"Brain Fog"</em> trong cộng đồng học sinh THPT, phụ huynh và
+                giáo viên.
+              </li>
+              <li>
+                💡 Góp phần cải thiện chất lượng học tập và sức khỏe tinh thần
+                của học sinh thông qua việc cung cấp thông tin và giải pháp khoa
+                học, thiết thực.
+              </li>
+            </ul>
+          </div>
+
+          <!-- Mục tiêu cụ thể -->
+          <div
+            style="
+              background: #f9f9f9;
+              border-left: 6px solid #60a5fa;
+              padding: 20px;
+              border-radius: 10px;
+              margin-bottom: 30px;
+            "
+          >
+            <h4 style="color: #1d4ed8; font-size: 20px; margin-bottom: 10px">
+              2️⃣ Mục tiêu Cụ thể
+            </h4>
+            <p style="margin-bottom: 15px">
+              Để đạt được mục tiêu tổng quát, dự án tập trung vào các mục tiêu
+              cụ thể sau:
+            </p>
+
+            <h5 style="color: #145aa0; font-size: 19px">
+              🔍 Nghiên cứu và Thu thập dữ liệu
+            </h5>
+            <ul style="margin-left: 25px">
+              <li>
+                <strong>Phân tích nguyên nhân:</strong> Xác định các yếu tố
+                chính gây ra hoặc làm trầm trọng thêm hội chứng Brain Fog ở học
+                sinh THPT tại
+                <em
+                  >[địa phương nghiên cứu, ví dụ: TP. Hồ Chí Minh, Hà
+                  Nội...]</em
+                >. Các yếu tố có thể bao gồm áp lực học tập, thói quen sinh hoạt
+                (ngủ, ăn uống), sử dụng thiết bị điện tử, và các vấn đề tâm lý.
+              </li>
+              <li>
+                <strong>Nhận diện triệu chứng:</strong> Tổng hợp và mô tả chi
+                tiết các triệu chứng phổ biến của Brain Fog mà học sinh THPT
+                thường gặp phải, giúp các em tự nhận diện và tìm kiếm sự hỗ trợ.
+              </li>
+              <li>
+                <strong>Thống kê thực trạng:</strong> Tiến hành khảo sát hoặc
+                thu thập số liệu sơ bộ về tỷ lệ học sinh THPT từng trải qua các
+                dấu hiệu của Brain Fog.
+              </li>
+            </ul>
+
+            <h5 style="color: #145aa0; font-size: 19px; margin-top: 15px">
+              🧠 Phát triển và Trình bày Giải pháp
+            </h5>
+            <ul style="margin-left: 25px">
+              <li>
+                <strong>Đề xuất giải pháp khoa học:</strong> Tổng hợp các phương
+                pháp và lời khuyên từ chuyên gia (y tế, tâm lý, giáo dục) để
+                giảm thiểu và cải thiện tình trạng Brain Fog. Bao gồm thay đổi
+                lối sống, phương pháp học tập, quản lý căng thẳng, v.v.
+              </li>
+              <li>
+                <strong>Xây dựng tài nguyên hữu ích:</strong> Cung cấp công cụ,
+                bài tập hoặc kỹ thuật giúp học sinh rèn luyện sự tập trung, cải
+                thiện trí nhớ và tăng cường sức khỏe tinh thần.
+              </li>
+            </ul>
+
+            <h5 style="color: #145aa0; font-size: 19px; margin-top: 15px">
+              🌈 Lan tỏa Kiến thức và Nâng cao Nhận thức Cộng đồng
+            </h5>
+            <ul style="margin-left: 25px">
+              <li>
+                <strong>Tạo nền tảng thông tin:</strong> Xây dựng website này
+                như một nguồn tài liệu đáng tin cậy, dễ tiếp cận cho học sinh,
+                phụ huynh và giáo viên về Brain Fog.
+              </li>
+              <li>
+                <strong>Thúc đẩy đối thoại:</strong> Khuyến khích chia sẻ kinh
+                nghiệm và kết nối giữa học sinh – chuyên gia để cùng nhau vượt
+                qua Brain Fog.
+              </li>
+              <li>
+                <strong>Gợi ý chính sách:</strong> Đề xuất khuyến nghị nhỏ cho
+                nhà trường hoặc cơ quan giáo dục nhằm quan tâm hơn đến sức khỏe
+                tinh thần của học sinh.
+              </li>
+            </ul>
+          </div>
+
+          <!-- Kết quả mong đợi -->
+          <div
+            style="
+              background: #eff6ff;
+              border-left: 6px solid #2563eb;
+              padding: 20px;
+              border-radius: 10px;
+            "
+          >
+            <h4 style="color: #1d4ed8; font-size: 20px; margin-bottom: 10px">
+              3️⃣ Kết quả Mong Đợi
+            </h4>
+            <ul style="margin-left: 25px">
+              <li>
+                🎓 Học sinh THPT có thể tự nhận biết và hiểu rõ hơn về Brain
+                Fog, từ đó chủ động tìm kiếm giải pháp hoặc sự hỗ trợ cần thiết.
+              </li>
+              <li>
+                👨‍🏫 Phụ huynh và giáo viên có thêm kiến thức để thấu hiểu, đồng
+                hành và hỗ trợ học sinh hiệu quả hơn.
+              </li>
+              <li>
+                🏫 Góp phần tạo ra môi trường học đường tích cực, nơi sức khỏe
+                tinh thần được coi trọng, giúp học sinh phát triển toàn diện cả
+                về trí tuệ và tâm hồn — hướng đến
+                <strong>trường học hạnh phúc</strong>.
+              </li>
+            </ul>
+          </div>
+        </section>
+      </div>
+      <!--
+        <div id="solution" class="page">
+            <h2>Giải pháp</h2>
+            <p>Giải pháp của dự án sẽ được thêm ở đây.</p>
+        </div>    
+-->
+
+      <!-- Phần Giải Pháp trình bày cách đẹp hơn -->
+      <div id="solution" class="page">
+        <section
+          style="
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 30px;
+            font-size: 18px;
+            line-height: 1.8;
+            color: #333;
+          "
+        >
+          <h2
+            style="
+              text-align: center;
+              color: #10b981;
+              font-size: 28px;
+              margin-bottom: 15px;
+            "
+          >
+            💡 GIẢI PHÁP
+          </h2>
+          <h3
+            style="
+              text-align: center;
+              color: #059669;
+              font-size: 22px;
+              margin-bottom: 25px;
+            "
+          >
+            Tiếp Cận Toàn Diện: Kết Hợp Nền Tảng Số và Tương Tác Thực Tế
+          </h3>
+
+          <p style="text-align: justify; margin-bottom: 20px">
+            Để giải quyết **"Hội chứng sương mù não"** (Brain Fog) ở học sinh
+            THPT một cách hiệu quả và bền vững, chúng tôi đề xuất một chiến lược
+            can thiệp **hai hướng tiếp cận** đồng thời: **Nền tảng số** và
+            **Tương tác thực tế**.
+          </p>
+
+          <div
+            style="
+              background: #ecfdf5;
+              border-left: 6px solid #059669;
+              padding: 20px;
+              border-radius: 10px;
+              margin-bottom: 30px;
+            "
+          >
+            <h4 style="color: #047857; font-size: 20px; margin-bottom: 10px">
+              ✅ Tóm tắt Chiến lược
+            </h4>
+            <p style="text-align: justify">
+              Sự kết hợp của hai hướng này mang lại một giải pháp toàn diện, vừa
+              khai thác sức mạnh của công nghệ, vừa đề cao giá trị của trải
+              nghiệm thực tế, giúp học sinh THPT vượt qua **"sương mù não"** và
+              phát triển toàn diện.
+            </p>
+          </div>
+
+          <div
+            style="
+              background: #f0fff4;
+              border: 1px solid #34d399;
+              padding: 20px;
+              border-radius: 10px;
+              margin-bottom: 30px;
+              box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+            "
+          >
+            <h4 style="color: #047857; font-size: 20px; margin-bottom: 15px">
+              1️⃣ Hướng 1: Nền tảng Số (Digital Platform) 💻
+            </h4>
+            <p style="text-align: justify; margin-bottom: 15px">
+              Hướng này tận dụng công nghệ để tạo ra một **không gian học tập
+              linh hoạt và cá nhân hóa**. Nền tảng số giúp học sinh tự quản lý
+              thời gian, học theo tốc độ riêng, và tiếp cận kiến thức một cách
+              hiệu quả, từ đó **giảm áp lực và cải thiện sự tập trung**.
+            </p>
+
+            <h5 style="color: #065f46; font-size: 19px">
+              🛠️ Công cụ và Ứng dụng đề xuất:
+            </h5>
+            <ul style="margin-left: 25px">
+              <li>
+                <strong>Học tập Cá nhân hóa:</strong> Cung cấp các công cụ học
+                tập trực tuyến và bài tập tương tác được thiết kế phù hợp với
+                nhịp độ tiếp thu của từng học sinh.
+              </li>
+              <li>
+                <strong>Quản lý Thời gian Thông minh:</strong> Ứng dụng giúp học
+                sinh lập kế hoạch, theo dõi tiến độ, và áp dụng kỹ thuật ngắt
+                quãng (như Pomodoro) để tránh quá tải.
+              </li>
+              <li>
+                <strong>Tài nguyên Đa phương tiện:</strong> Kho tài liệu đa dạng
+                (video ngắn, infographic, podcast) về kỹ năng học tập và sức
+                khỏe tinh thần, dễ dàng tiếp cận.
+              </li>
+            </ul>
+          </div>
+
+          <div
+            style="
+              background: #f0fff9;
+              border: 1px solid #6ee7b7;
+              padding: 20px;
+              border-radius: 10px;
+              box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+            "
+          >
+            <h4 style="color: #047857; font-size: 20px; margin-bottom: 15px">
+              2️⃣ Hướng 2: Tương tác Thực tế (Real-world Interaction) 🌳
+            </h4>
+            <p style="text-align: justify; margin-bottom: 15px">
+              Hướng này tập trung vào việc khuyến khích các hoạt động ngoại
+              khóa, giao lưu xã hội, và rèn luyện thể chất. Các hoạt động trực
+              tiếp giúp học sinh **thoát khỏi màn hình**, giải tỏa căng thẳng,
+              phát triển kỹ năng mềm, và **tái tạo năng lượng tinh thần**.
+            </p>
+
+            <h5 style="color: #065f46; font-size: 19px">
+              🧘 Hoạt động và Chương trình đề xuất:
+            </h5>
+            <ul style="margin-left: 25px">
+              <li>
+                <strong>Workshop và Hội thảo chuyên đề:</strong> Tổ chức các
+                buổi workshop với chuyên gia tâm lý về quản lý căng thẳng, vệ
+                sinh giấc ngủ, và dinh dưỡng.
+              </li>
+              <li>
+                <strong>Hoạt động Thể chất và Tình nguyện:</strong> Khuyến khích
+                tham gia thể thao, các câu lạc bộ (CLB) sở thích và hoạt động
+                tình nguyện để tạo niềm vui và kết nối xã hội.
+              </li>
+              <li>
+                <strong>Kỹ thuật Chánh niệm (Mindfulness):</strong> Đưa các bài
+                tập thở, thư giãn và chánh niệm vào thời gian nghỉ giữa giờ hoặc
+                đầu/cuối ngày học.
+              </li>
+            </ul>
+          </div>
+        </section>
+      </div>
+
+      <!-- Phần Kết Quả nội dung kèm có hình ảnh minh họa -->
+      <div id="result" class="page">
+        <section
+          style="
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 30px;
+            font-size: 18px;
+            line-height: 1.8;
+            color: #333;
+          "
+        >
+          <h2
+            style="
+              text-align: center;
+              color: #f59e0b;
+              font-size: 28px;
+              margin-bottom: 15px;
+            "
+          >
+            🎉 KẾT QUẢ VÀ TÁC ĐỘNG
+          </h2>
+          <h3
+            style="
+              text-align: center;
+              color: #d97706;
+              font-size: 22px;
+              margin-bottom: 25px;
+            "
+          >
+            Hiệu Quả Thực Tiễn từ Mô Hình Giải Pháp Toàn Diện
+          </h3>
+
+          <p style="text-align: justify; margin-bottom: 20px">
+            Sau khi thực nghiệm các giải pháp được thiết kế theo mô hình kết hợp
+            **Nền tảng số** và **Tương tác thực tiễn**, nhóm nghiên cứu đã thu
+            được những kết quả ban đầu đầy khích lệ, thể hiện qua sự đón nhận
+            tích cực và những phản hồi trực tiếp từ học sinh THPT.
+          </p>
+
+          <div
+            style="
+              background: #fffbeb;
+              border-left: 6px solid #f59e0b;
+              padding: 20px;
+              border-radius: 10px;
+              margin-bottom: 30px;
+            "
+          >
+            <h4 style="color: #b45309; font-size: 20px; margin-bottom: 10px">
+              1️⃣ Sự Hứng thú Trải nghiệm Sản phẩm Số
+            </h4>
+            <ul style="margin-left: 25px; margin-bottom: 15px">
+              <li>
+                🌟 Học sinh THPT có sự **hứng thú cao** trong việc trải nghiệm
+                các công cụ và tài nguyên trên nền tảng số.
+              </li>
+              <li>
+                💻 Sự linh hoạt và tính cá nhân hóa đã giúp các em **chủ động
+                tìm kiếm** cách vượt qua Brain Fog.
+              </li>
+            </ul>
+            <div style="text-align: center; margin-top: 20px">
+              <img
+                src="hinh-nhom-1.jpg"
+                alt="Học sinh THPT tương tác với laptop"
+                style="
+                  max-width: 90%;
+                  height: auto;
+                  border-radius: 8px;
+                  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+                "
+              />
+            </div>
+          </div>
+
+          <div
+            style="
+              background: #fefce8;
+              border-left: 6px solid #fbbf24;
+              padding: 20px;
+              border-radius: 10px;
+              margin-bottom: 30px;
+            "
+          >
+            <h4 style="color: #b45309; font-size: 20px; margin-bottom: 10px">
+              2️⃣ Hiệu quả từ Buổi Trải nghiệm Thực tế
+            </h4>
+            <p style="text-align: justify; margin-bottom: 15px">
+              Nhóm nghiên cứu đã tiến hành tổ chức **1 buổi trải nghiệm sản phẩm
+              thực tế** và nhận được **rất nhiều phản hồi tích cực**:
+            </p>
+            <ul style="margin-left: 25px">
+              <li>
+                🤝 Các hoạt động trực tiếp được đánh giá cao về tính thiết thực
+                và khả năng ứng dụng.
+              </li>
+              <li>
+                📝 Học sinh quan tâm đến các phương pháp **quản lý căng thẳng**
+                và **tăng cường kết nối xã hội**.
+              </li>
+            </ul>
+            <div
+              style="
+                display: flex;
+                justify-content: center;
+                align-items: flex-start;
+                margin-top: 20px;
+                flex-wrap: wrap;
+                gap: 20px;
+              "
+            >
+              <div style="width: 40%; margin-bottom: 15px">
+                <img
+                  src="hinh-nhom-3.jpg"
+                  alt="Học sinh với ấn phẩm RISE"
+                  style="
+                    width: 100%;
+                    height: auto;
+                    border-radius: 8px;
+                    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+                  "
+                />
+              </div>
+              <div style="width: 40%; margin-bottom: 15px">
+                <img
+                  src="hinh-nhom-2.jpg"
+                  alt="Học sinh tương tác và đọc sách"
+                  style="
+                    width: 100%;
+                    height: auto;
+                    border-radius: 8px;
+                    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+                  "
+                />
+              </div>
+            </div>
+          </div>
+
+          <div
+            style="
+              background: #f0f6ff;
+              border-left: 6px solid #2563eb;
+              padding: 20px;
+              border-radius: 10px;
+            "
+          >
+            <h4 style="color: #1d4ed8; font-size: 20px; margin-bottom: 10px">
+              ✨ Kết luận Sơ bộ
+            </h4>
+            <p style="text-align: justify; margin-bottom: 20px">
+              Các kết quả ban đầu khẳng định rằng phương pháp tiếp cận kép (số
+              hóa và thực tế) là hướng đi đúng đắn, không chỉ giải quyết vấn đề
+              Brain Fog mà còn tạo ra một **môi trường học tập cân bằng, toàn
+              diện** cho học sinh THPT.
+            </p>
+
+            <div style="width: 32%; margin: 0 auto 15px auto">
+              <img
+                src="hinh-nhom-4.jpg"
+                alt="Học sinh thảo luận trong góc đọc sách"
+                style="
+                  width: 100%;
+                  height: auto;
+                  border-radius: 8px;
+                  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+                "
+              />
+            </div>
+          </div>
+        </section>
+      </div>
+
+      <div id="product" class="page">
+        <!--<h2><br>👉 Mời các bạn vào xem sản phẩm trên Youtube </h2>-->
+        <h2><br />👉 Mời các bạn vào xem sản phẩm trên Youtube</h2>
+        <!-- 🔹 Hàng 1: Liên kết tới trang Fanpage Facebook -->
+        <div class="product-section">
+          <!-- Bên trái: mô tả -->
+          <div class="product-text">
+            <h3>☘️ Fanpage Facebook</h3>
+            <p>
+              Nhấp vào link bên cạnh để đi đến trang Fanpage: "Đi đâu cũng thấy
+              trời xanh".
+            </p>
+          </div>
+          <!-- Bên phải: link video -->
+          <div class="product-video">
+            <p>
+              <br />
+              <a href="https://www.facebook.com/share/1GTGw3njhG">
+                🌳 Xem Fanpage Facebook "Đi đâu cũng thấy trời xanh"
+              </a>
+            </p>
+          </div>
+        </div>
+
+        <!-- 🔹 Hàng 2: Video Phần 1 -->
+        <div class="product-section">
+          <!-- Bên trái: mô tả -->
+          <div class="product-text">
+            <h3>☘️ Series Podcast Phần 1</h3>
+            <p>
+              Đây là video kể lại quá trình tìm hiểu để đi đến nghiên cứu đề
+              tài.
+            </p>
+          </div>
+          <!-- Bên phải: link video -->
+          <div class="product-video">
+            <p>
+              <br />
+              <a
+                href="https://www.youtube.com/watch?v=XECl_eq6fkw&si=anUxSHb9pA6DCbfz"
+                target="_blank"
+              >
+                🌳 Xem video Series Podcast Phần 1
+              </a>
+            </p>
+          </div>
+        </div>
+        <!-- 🔹 Hàng 3: Video Phần 2 -->
+        <div class="product-section">
+          <div class="product-text">
+            <h3>☘️ Học cùng mình một tiếng nha!</h3>
+            <p>Giữa thế giới ồn ào ta chọn ngồi lại và học 🎹.</p>
+          </div>
+          <div class="product-video">
+            <p>
+              <br />
+              <a href="https://youtu.be/F9jlZaWKaGo?si=L93-SH2RppN6khGW">
+                ☘️ Xem video Study with me for one hour
+              </a>
+            </p>
+          </div>
+        </div>
+        <!-- 🔹 Hàng 4: Video Phần 3 -->
+        <div class="product-section">
+          <div class="product-text">
+            <h3>🌱 Khởi đầu từ một phút tập trung rồi mọi thứ sẽ theo sau!</h3>
+            <p>
+              Giữa thế giới ồn ào ta chọn ngồi lại và học - trải nghiệm lần đầu
+              tiên.
+            </p>
+          </div>
+          <div class="product-video">
+            <p>
+              <br />
+              <a href="https://youtu.be/uJ_81NCLBdU?si=WV4AuWkTdq7epeZu">
+                🌱 Xem video study with me for two hour
+              </a>
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <div id="games" class="page">
+        <!--            
+            <br>
+            <h2>Trò chơi "Cây Nảy Mầm"</h2>
+            <p>Bạn nhấp 👉 vào nút điều khiển để tham gia trò chơi nhé!</p>
+        -->
+        <iframe
+          src=""
+          width="100%"
+          height="600"
+          style="
+            border: none;
+            display: none;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+          "
+        >
+        </iframe>
+      </div>
+
+      <div id="contact" class="page">
+        <section
+          style="
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 40px 30px;
+            font-size: 18px;
+            line-height: 1.6;
+            color: #333;
+            background-color: #f4f8ff;
+            border-radius: 15px;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.08);
+          "
+        >
+          <h2
+            style="
+              text-align: center;
+              color: #1e40af;
+              font-size: 32px;
+              margin-bottom: 10px;
+              border-bottom: 3px solid #3b82f6;
+              display: inline-block;
+              padding-bottom: 8px;
+            "
+          >
+            📧 LIÊN HỆ VỚI CHÚNG TÔI
+          </h2>
+
+          <h3
+            style="
+              text-align: center;
+              color: #374151;
+              font-size: 20px;
+              margin-top: 15px;
+              margin-bottom: 30px;
+            "
+          >
+            Hợp tác, Chia sẻ và Hỗ trợ
+          </h3>
+
+          <div
+            style="
+              text-align: center;
+              background: #ffffff;
+              padding: 25px;
+              border-radius: 10px;
+              border: 1px solid #d1e0f0;
+              margin-bottom: 30px;
+            "
+          >
+            <p
+              style="
+                color: #1d4ed8;
+                font-size: 18px;
+                margin-bottom: 10px;
+                font-weight: 500;
+              "
+            >
+              Chúng tôi luôn sẵn lòng lắng nghe ý kiến đóng góp, phản hồi hoặc
+              yêu cầu hợp tác từ bạn.
+            </p>
+            <p
+              style="
+                font-size: 22px;
+                font-weight: bold;
+                color: #059669;
+                letter-spacing: 0.5px;
+              "
+            >
+              <span style="color: #3b82f6">Email:</span>
+            </p>
+
+            <p class="author-email">
+              <a href="mailto:nina.dang.khanh.ngan@gmail.com">
+                nina.dang.khanh.ngan@gmail.com
+              </a>
+            </p>
+
+            <p class="author-email">
+              <a href="mailto:cherrykhanh2009@gmail.com">
+                cherrykhanh2009@gmail.com
+              </a>
+            </p>
+
+            <p style="color: #ef4444; font-size: 14px; margin-top: 5px">
+              * Lưu ý: "Bạn có thể tạo một email chuyên nghiệp mới cho dự án để
+              dễ quản lý".
+            </p>
+          </div>
+          <style>
+            .author-email {
+              font-size: 20px;
+              font-weight: bold;
+              color: #059669;
+              letter-spacing: 0.5px;
+              margin: 8px 0;
+              word-break: break-word; /* Ensure long emails wrap on small screens */
+            }
+
+            .author-email a {
+              color: #059669;
+              text-decoration: none;
+              border-bottom: 2px dashed #059669;
+              transition: all 0.3s;
+            }
+
+            .author-email a:hover {
+              color: #047857;
+              border-bottom-color: #047857;
+            }
+          </style>
+
+          <div style="text-align: center; margin-top: 20px">
+            <h4 style="color: #1e40af; font-size: 20px; margin-bottom: 20px">
+              Nhóm Thực Hiện Dự Án
+            </h4>
+            <img
+              src="hinh-nhom-1.jpg"
+              alt="Ảnh nhóm thực hiện dự án Brain Fog"
+              style="
+                max-width: 100%;
+                width: 600px;
+                height: auto;
+                border-radius: 10px;
+                box-shadow: 0 6px 15px rgba(0, 0, 0, 0.25);
+                border: 4px solid #ffffff;
+              "
+            />
+          </div>
+        </section>
+      </div>
+    </main>
+
+    <!-- Chân trang -->
+    <footer>
+      © 2025 - Thiết kế bởi nhóm nghiên cứu đề tài khoa học : Đặng Khánh Ngân và
+      Dương Ngọc Khánh
+    </footer>
+
+    <script>
+      /*Đoạn này dùng để liên kết tới từng nút trên thanh điều hướng*/
+
+      // Hiển thị page theo id
+      function showPage(pageId) {
+        console.log("showPage:", pageId);
+        const pages = document.querySelectorAll(".page");
+        pages.forEach((p) => p.classList.remove("active"));
+        const target = document.getElementById(pageId);
+        if (target) target.classList.add("active");
+      }
+
+      // Chuyển trang thông thường
+      function showPage(pageId) {
+        const pages = document.querySelectorAll(".page");
+        const main = document.getElementById("main-content");
+
+        // Ẩn tất cả các trang
+        pages.forEach((page) => page.classList.remove("active"));
+
+        // Hiển thị trang được chọn
+        document.getElementById(pageId).classList.add("active");
+
+        function showPage(pageId) {
+          const pages = document.querySelectorAll(".page");
+          pages.forEach((page) => {
+            page.classList.remove("active");
+            page.style.display = "none";
+          });
+
+          const currentPage = document.getElementById(pageId);
+          if (currentPage) {
+            currentPage.classList.add("active");
+            currentPage.style.display = "block";
+          }
+
+          // Chỉ đổi nền cho vùng nội dung
+          const main = document.querySelector("main");
+          switch (pageId) {
+            case "home":
+              //main.style.backgroundImage = "none";
+              //main.style.backgroundColor = "transparent";//
+              main.style.backgroundImage =
+                "linear-gradient(135deg, #e3f2fd, #ffffff)";
+              break;
+            case "about":
+              main.style.backgroundImage =
+                "linear-gradient(135deg, #e3f2fd, #ffffff)";
+              break;
+            case "goal":
+              main.style.backgroundImage =
+                "linear-gradient(135deg, #fff8e1, #ffffff)";
+              break;
+            default:
+              main.style.backgroundImage = "none";
+              main.style.backgroundColor = "white";
+          }
+        }
+
+        // Đổi hình nền cho từng trang
+        switch (pageId) {
+          case "home":           
+            main.style.backgroundImage = "linear-gradient(135deg, #e3f2fd, #ffffff)";
+            main.style.backgroundColor = "transparent";
+            break;
+          case "about":           
+              main.style.backgroundImage = "linear-gradient(135deg, #e3f2fd, #ffffff)";
+              main.style.backgroundColor = "transparent";
+            break;
+          case "goal":            
+              main.style.backgroundImage = "linear-gradient(145deg, #e8f5e9, #ffffff)";
+              main.style.backgroundColor = "transparent";
+            break;
+          case "solution":           
+              main.style.backgroundImage = "linear-gradient(135deg, #e3f2fd, #ffffff)";
+              main.style.backgroundColor = "transparent";
+            break;
+          case "result":            
+              main.style.backgroundImage = "linear-gradient(160deg, #fff8e1 0%, #e3f2fd 70%)";
+              main.style.backgroundColor = "transparent";
+            break;
+          case "product":
+              main.style.backgroundImage = "url('nen-menu-san-pham.jpg')"; // https://live.staticflickr.com/65535/54908615928_4b7774ab46_m.jpg              
+            break;
+          case "games":
+              main.style.backgroundImage = "url('nen-menu-tro-choi.jpg')"
+             // main.style.backgroundImage = "none"; // Xóa hình nền
+             // main.style.backgroundColor = "white"; // Đặt nền trắng
+              break;
+          case "contact":
+              main.style.backgroundImage = "url('hinh-nhom-1.jpg')";
+          break;
+        } /*Đóng Switch*/
+      } /*Đóng fution*/
+
+      // Gọi mặc định khi tải trang lần đầu
+      window.onload = () => showPage("home");
+      function showGames() {
+        // Hiển thị trang games
+        showPage("games");
+
+        // Ẩn iframe nếu có
+        const iframe = document.querySelector("#games iframe");
+        iframe.style.display = "none";
+        iframe.src = "";
+
+        // Hiển thị thông báo chào mừng
+        const gamesDiv = document.getElementById("games");
+
+        // Xóa thông báo cũ nếu có
+        let notice = gamesDiv.querySelector(".notice");
+        if (!notice) {
+          notice = document.createElement("p");
+          notice.className = "notice";
+          notice.style.color = "#e00497";
+          notice.style.fontWeight = "bold";
+          notice.style.fontSize = "38px";
+          00;
+          /*notice.textContent = 'Chào mừng các bạn đến với trò chơi. Bạn chọn cấp học của mình trong menu trò chơi đi!'; Nằm trong một hàng*/
+          notice.style.textAlign = "center"; // ⭐ canh giữa
+          notice.style.marginTop = "140px"; // Tạo khoảng cách từ trên
+          notice.style.lineHeight = "1.6"; // Khoảng cách giữa 2 câu
+          notice.innerHTML =
+            "🥰🥰🥰🥰🥰🥰🥰🥰🥰🥰🥰<br>Chào mừng các bạn đến với trò chơi!<br>Nhấp vào danh sách để chọn cấp học của bạn nhé! <br>🌺🌺🌺🌺🌺🌺🌺🌺🌺🌺🌺🌺🌺🌺🌺🌺🌺🌺🌺";
+          /*Xuống hàng*/ let visible = true;
+          setInterval(() => {
+            if (visible) {
+              notice.style.visibility = "hidden"; // ẩn đi
+            } else {
+              notice.style.visibility = "visible"; // hiện lại
+            }
+            visible = !visible;
+          }, 600); // nhấp nháy 0.5 giây/lần
+
+          // Thêm trước iframe
+          gamesDiv.insertBefore(notice, iframe);
+        } else {
+          notice.style.display = "block";
+        }
+
+        // Tự động xóa thông báo sau 5 giây (5000ms)
+        setTimeout(() => {
+          if (notice) notice.style.display = "none";
+        }, 2000);
+      }
+     
+      // Mở trò chơi theo cấp học
+      function moTroChoi(level) {
+        showPage("games");
+        const iframe = document.querySelector("#games iframe");
+        if (level === "thpt") {
+          iframe.src = "cay-nay-mam-thpt.html";
+        } else if (level === "thcs") {
+          iframe.src =
+            "cay-nay-mam-thcs-25s.html"; /*iframe.src = 'cay-nay-mam-thcs-25ph.html';*/
+        } else if (level === "tieuhoc") {
+          iframe.src =
+            "cay-nay-mam-tieu-hoc-25s.html"; /*iframe.src = 'cay-nay-mam-tieu-hoc-25ph.html';*/
+        }
+        iframe.style.display = "block";
+      }
+
+      function moSanPham(level) {
+        const iframe = document.querySelector("#games iframe");
+        if (!iframe) {
+          console.error("⚠️ Iframe not found inside #games");
+          return;
+        }
+
+        if (level === "fanpage") {
+          window.open("https://www.facebook.com/share/1GTGw3njhG/", "_blank");
+          return;
+        }
+
+        iframe.src = ""; // clear old
+        iframe.style.display = "block"; // make visible first
+
+        // set the new video
+        if (level === "podcast") {
+          iframe.src = "https://www.youtube.com/embed/XECl_eq6fkw";
+        } else if (level === "lang") {
+          iframe.src = "https://www.youtube.com/embed/F9jlZaWKaGo?start=583";
+        } else if (level === "rise") {
+          iframe.src = "https://www.youtube.com/embed/uJ_81NCLBdU?start=5";
+        }
+
+        // now reveal the page
+        showPage("games");
+      }
+    </script>
+
+    <!-- Nút liên hệ góc phải -->
+    <div class="contact-buttons">
+      <a href="tel:0909898497" class="contact-btn phone" title="Gọi điện">📞</a>
+      <a
+        href="https://zalo.me/0909898497"
+        target="_blank"
+        class="contact-btn zalo"
+        title="Zalo"
+        >💬</a
+      >
+      <a
+        href="https://m.me/tenfacebook"
+        target="_blank"
+        class="contact-btn messenger"
+        title="Messenger"
+        >💻</a
+      >
+    </div>
+  </body>
+</html>
